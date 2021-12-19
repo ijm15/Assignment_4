@@ -182,10 +182,16 @@ final public class AirlineSystem implements AirlineInterface {
     try{
       for (int i = 0; i < G.v; i++) {
         for (Route e : G.adj(i)) {
-          if((e.source == source && e.destination == destination) ||(e.source == destination && e.destination == source) ) return false;
+          if((e.source == source && e.destination == destination)) return false;
           }
         }
 
+
+    for (int i = 0; i < G.v; i++) {
+        for (Route e : G.adj(i)) {
+          if((e.source == destination && e.destination == source)) return false;
+          }
+        }
 
     G.addEdge(new Route(source, destination, distance, price));
     G.addEdge(new Route(destination, destination, distance, price));
